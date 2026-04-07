@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Skill sync temp
+.tmp/
+.temp/
+
+# Skill release output
+*.skill
+dist/
+releases/

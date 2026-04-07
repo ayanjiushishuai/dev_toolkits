@@ -1,0 +1,87 @@
+{
+  "skill_name": "test-engineer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请检查当前开发模块是否有对应测试，重点关注 extra_function/utils/vector_stores/advanced/ 目录下的模块",
+      "expected_output": "输出测试覆盖率报告，列出已覆盖和未覆盖的模块，特别是 advanced 目录下的模块",
+      "files": [],
+      "assertions": [
+        {
+          "type": "coverage_report",
+          "description": "输出包含覆盖率报告",
+          "passed": "报告包含已覆盖和未覆盖模块列表"
+        },
+        {
+          "type": "missing_modules",
+          "description": "识别未覆盖的模块",
+          "passed": "识别出 advanced 目录下缺少测试的模块"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "为 AdvancedMilvusDB 模块生成测试用例，要求使用严格断言，验证返回值结构、字段类型、业务逻辑",
+      "expected_output": "生成 tests/tools/test_milvus_advanced.py 文件，包含严格的断言设计",
+      "files": [],
+      "assertions": [
+        {
+          "type": "file_created",
+          "description": "测试文件已创建",
+          "passed": "文件 tests/tools/test_milvus_advanced.py 存在"
+        },
+        {
+          "type": "strict_assertions",
+          "description": "包含严格断言",
+          "passed": "断言验证字段类型和业务逻辑，不是简单的 != None"
+        },
+        {
+          "type": "mock_object",
+          "description": "包含 Mock 对象设计",
+          "passed": "包含用于测试的 Mock VectorStore 类"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "为数据库检索流程设计集成测试，测试创建集合、插入数据、检索数据的完整流程",
+      "expected_output": "生成 tests/integration/test_db_analyser_flow.py 集成测试文件",
+      "files": [],
+      "assertions": [
+        {
+          "type": "file_created",
+          "description": "集成测试文件已创建",
+          "passed": "文件 tests/integration/test_db_analyser_flow.py 存在"
+        },
+        {
+          "type": "full_flow",
+          "description": "测试完整流程",
+          "passed": "测试包含 create -> insert -> search 完整流程"
+        },
+        {
+          "type": "strict_assertions",
+          "description": "严格断言验证",
+          "passed": "断言验证插入和检索的具体字段值"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "我编写了一个测试，但是断言太宽松：assert result is not None。请帮我改进为严格断言，验证 result 是 dict 类型，包含 id、score、metadata 字段，metadata 是 dict 类型",
+      "expected_output": "提供改进后的断言代码示例",
+      "files": [],
+      "assertions": [
+        {
+          "type": "strict_assertions",
+          "description": "给出严格断言示例",
+          "passed": "包含 isinstance 类型检查和字段存在性验证"
+        },
+        {
+          "type": "explanation",
+          "description": "解释为什么需要严格断言",
+          "passed": "说明宽松断言的问题"
+        }
+      ]
+    }
+  ]
+}

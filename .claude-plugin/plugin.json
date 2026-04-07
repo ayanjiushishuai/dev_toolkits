@@ -1,0 +1,13 @@
+{
+  "name": "dev-toolkits",
+  "description": "个人开发工具集，包含 ez-dev 完整开发流程、doc_integrate 文档整合、hs_test 华山测试等技能。触发条件：用户提出开发需求、文档整理请求、测试执行时。",
+  "version": "1.0.0",
+  "author": {
+    "name": "ayanjiushishuai",
+    "url": "https://github.com/ayanjiushishuai"
+  },
+  "homepage": "https://github.com/ayanjiushishuai/dev_toolkits",
+  "repository": "https://github.com/ayanjiushishuai/dev_toolkits",
+  "license": "MIT",
+  "keywords": ["ez-dev", "workflow", "development", "tdd", "doc-integrate", "hs-test", "chinese"]
+}
