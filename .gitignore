@@ -11,6 +11,7 @@ Thumbs.db
 # Skill sync temp
 .tmp/
 .temp/
+skills/skill-sync/
 
 # Skill release output
 *.skill
