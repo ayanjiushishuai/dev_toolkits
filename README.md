@@ -7,11 +7,13 @@
 | Skill | 说明 | 触发条件 |
 |-------|------|----------|
 | **ez-dev** | 完整开发流程（需求→独立Review→设计→TDD→验证→完成） | "帮我开发..."、"实现一个..." |
+| **daily_progress_summary** | 生成每日开发进度总结报告 | "日报"、"开发进度报告" |
+| **deeptalk** | 需求深度挖掘助手 | "/deeptalk"、"讨论：<主题>" |
 | **doc_integrate** | 文档整合与同步维护 | "整理文档"、"同步文档" |
 | **hs_test** | 华山项目测试技能 | "运行测试"、"执行测试" |
 | **test** | 通用测试工程技能 | "测试报告"、"生成测试用例" |
+| **todo_list_manager** | 管理 todo.md 和 work_done.md 的任务生命周期 | "今日计划"、"本周计划" |
 | **update_doc** | 开发文档健康度审计与更新 | "审计文档"、"检查文档过时" |
-| **skill-sync** | 同步 skills 到 Git 仓库 | "同步 skills"、"发布 skills" |
 
 ---
 
@@ -91,13 +93,15 @@ cd D:/02_code/dev_toolkits
 dev_toolkits/
 ├── .claude-plugin/          # 插件元数据
 ├── skills/                   # 所有 Skills
-│   ├── ez-dev/              # 完整开发流程
-│   │   └── references/      # 引用文档（design-review, test-strategy 等）
-│   ├── doc_integrate/       # 文档整合
-│   ├── hs_test/             # 华山测试
-│   ├── test/                # 通用测试
-│   ├── update_doc/          # 文档审计
-│   └── skill-sync/          # 同步工具
+│   ├── daily_progress_summary/  # 每日进度报告
+│   ├── deeptalk/             # 需求深度挖掘
+│   ├── doc_integrate/        # 文档整合
+│   ├── ez-dev/               # 完整开发流程
+│   │   └── references/        # 引用文档（design-review, test-strategy 等）
+│   ├── hs_test/              # 华山测试
+│   ├── test/                 # 通用测试
+│   ├── todo_list_manager/    # 任务生命周期管理
+│   └── update_doc/           # 文档审计
 ├── scripts/
 └── README.md
 ```

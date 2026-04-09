@@ -1,0 +1,20 @@
+{
+  "skill_name": "daily-progress-summary",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "生成开发进度报告",
+      "expected_output": "HTML文件保存在.dev_doc/daily_process/目录下，包含任务汇总、代码变更、实际开发进展和待解决问题"
+    },
+    {
+      "id": 2,
+      "prompt": "总结一下最近的开发进度，整理成日报",
+      "expected_output": "生成HTML日报，包含todo.md中的任务、work_done.md中的已完成事项、status.md中的当前阶段、以及git变更"
+    },
+    {
+      "id": 3,
+      "prompt": "帮我整理进度",
+      "expected_output": "生成开发进度总结HTML报告"
+    }
+  ]
+}

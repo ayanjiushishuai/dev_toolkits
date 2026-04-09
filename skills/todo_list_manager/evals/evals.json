@@ -1,0 +1,35 @@
+{
+  "skill_name": "todo-list-manager",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想添加一个新的需求：优化数据库检索的缓存机制，提高查询速度",
+      "expected_output": "应该生成符合 todo.md 格式的新任务条目，包含模块归属、优先级建议、工作量估算，并更新到 .dev_doc/todo.md 中",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我看看当前所有任务的优先级，分析一下是否需要调整",
+      "expected_output": "应该读取 .dev_doc/todo.md，综合评分模型计算每个任务的分数，输出优先级分析报告，包含各维度评分和调整建议",
+      "files": [".dev_doc/todo.md"]
+    },
+    {
+      "id": 3,
+      "prompt": "数据库 Skill 重构这个任务完成了，帮我验证一下然后移到已完成",
+      "expected_output": "应该读取 todo.md 中的任务详情，执行代码存在性验证、文档一致性验证，输出验证报告，等待用户确认",
+      "files": [".dev_doc/todo.md"]
+    },
+    {
+      "id": 4,
+      "prompt": "生成今日开发计划，看看今天应该做什么",
+      "expected_output": "应该读取 todo.md，按优先级排序，分析可执行任务，输出今日开发计划，包含 P0/P1 任务列表和具体行动建议",
+      "files": [".dev_doc/todo.md", ".dev_doc/work_done.md"]
+    },
+    {
+      "id": 5,
+      "prompt": "我想添加一个神通国产数据库兼容的需求，你觉得应该排什么优先级？工作量大概多久？",
+      "expected_output": "应该分析需求背景，给出优先级评分明细和工作量估算（乐观/预期/保守），并询问用户确认后写入 todo.md",
+      "files": []
+    }
+  ]
+}
