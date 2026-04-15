@@ -1,0 +1,22 @@
+{
+  "eval_id": 3,
+  "eval_name": "KeyError-session-id",
+  "prompt": "程序报错 KeyError: 'session_id'，在调用 graph/extraction/extractor.py 的 extract_entities 时发生，应该是 session 管理相关的问题",
+  "assertions": [
+    {
+      "text": "应该进入 Phase 1: Bug分析",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "追踪session_id来源并定位问题代码",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "创建测试用例复现Bug",
+      "passed": false,
+      "evidence": ""
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "eval_id": 1,
+  "eval_name": "TypeError-Cannot-read-property",
+  "prompt": "帮我修一个bug，报错信息是：TypeError: Cannot read property 'name' of undefined，发生在调用 vector_stores/factory.py 的 get_vector_store 方法时，怀疑和 MilvusProvider 相关",
+  "assertions": [
+    {
+      "text": "应该进入 Phase 1: Bug分析",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "分析报错原因并定位问题代码",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "创建测试用例复现Bug",
+      "passed": false,
+      "evidence": ""
+    }
+  ]
+}

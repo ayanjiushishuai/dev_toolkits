@@ -1,0 +1,22 @@
+{
+  "eval_id": 2,
+  "eval_name": "IndexError-list-index-out-of-range",
+  "prompt": "修复这个报错：IndexError: list index out of range，在运行 preprocess/pipeline.py 的 run 方法时出现，相关模块是 PreprocessPipeline",
+  "assertions": [
+    {
+      "text": "应该进入 Phase 1: Bug分析",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "分析IndexError原因并定位问题代码",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "创建测试用例复现Bug",
+      "passed": false,
+      "evidence": ""
+    }
+  ]
+}

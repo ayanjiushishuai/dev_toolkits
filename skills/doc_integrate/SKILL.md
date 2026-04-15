@@ -25,6 +25,40 @@ description: |
 
 ---
 
+## 整理原则（优先级排序）
+
+### 原则 1：模块归并
+**相关模块应该合并到统一路径**。
+- 例：`vector-schema-sync` + `vector-store-async-query` → `vector_store/`
+- 例：`milvus-id-field-fix` + `vector-schema-sync` → `vector_store/`（如果都是向量库相关）
+
+**识别方法**：
+- 通过代码目录判断：`extra_function/utils/vector_stores` → `vector_store/`
+- 通过功能关键词判断：async_query、MilvusAdvanceDB → 向量库模块
+
+### 原则 2：功能整合
+**相似的功能模块应该统一整合到一个文档中**。
+- 例：异步查询设计（async_query） + 工厂动态支持（factory dynamic）→ 都整合到 `vector_store/README.md`
+- 避免：同一个模块功能分散在多个 design.md 中
+
+### 原则 3：完成后合并
+**已完成的模块不应该继续保留 design/plan/status 分散文档**。
+- ✅ 已完成：design.md + plan.md + status.md → 合并成 `模块/README.md` 的章节
+- ⚠️ 进行中：保留 design/plan/status，完成后合并
+- ✅ changelog.md → 合并到 `模块/CHANGELOG.md`
+
+### 原则 4：规范路径优先
+**模块应在规范路径下，不在临时 feature 目录**。
+- `vector_store/` ✅ 是规范路径
+- `vector-schema-sync/` ❌ 是临时目录，应该清空合并
+
+### 原则 5：进行中模块不强制合并
+**仍在开发的模块（Phase < 6）暂时不处理**。
+- 等模块完成后再一次性合并
+- 避免多次合并导致文档碎片化
+
+---
+
 ## 概述
 
 本 skill 是 ez-dev 开发流程的收尾环节。ez-dev 创建的 `.dev_doc/<feature>/` 文档（design.md、plan.md、changelog.md）
@@ -142,16 +176,21 @@ description: |
 
 ## 模块归属识别
 
-通过文档内容匹配代码目录：
+通过代码目录判断模块归属：
 
-| 模块 | 关键词/路径 | 规范路径 |
-|------|-------------|----------|
-| vector_stores | vector、LocalVectorStore、MilvusAdvanceDB、QdrantAdvanceDB | `.dev_doc/vector_stores/` |
-| database | db、DBAnalyser、SQL、table_schema | `.dev_doc/data_process/` |
-| timeseries | timeseries、InfluxDB、DuckDB | `.dev_doc/data_process/timeseries/` |
-| memory | memory、mem0、pensieve | `.dev_doc/memory/` |
-| ptc | ptc、StepExecutor、ActionRouter | `.dev_doc/ptc/` |
-| rag | rag、RAG、Retrieval_RAG | `.dev_doc/rag/` |
+| 模块 | 代码路径 | 规范路径 |
+|------|----------|----------|
+| vector_stores | `extra_function/utils/vector_stores/` | `.dev_doc/vector_stores/` |
+| database | `extra_function/.../db/` 或 `DBAnalyser` | `.dev_doc/data_process/` |
+| timeseries | `timeseries`、`InfluxDB`、`DuckDB` | `.dev_doc/data_process/timeseries/` |
+| memory | `memory`、`mem0`、`pensieve` | `.dev_doc/memory/` |
+| ptc | `ptc`、`StepExecutor`、`ActionRouter` | `.dev_doc/ptc/` |
+| rag | `rag`、`RAG`、`Retrieval_RAG` | `.dev_doc/rag/` |
+| llm_compatibility | `llm_compat`、`OpenAICompatibleClient` | `.dev_doc/llm_compatibility/` |
+
+**归并识别**：多个 feature 目录可能属于同一模块。
+- `vector-schema-sync` + `vector-store-async-query` + `vector_store_refactor` → 都归入 `vector_stores/`
+- `llm-compat-fix` → 归入 `llm_compatibility/`
 
 ---
 
@@ -223,6 +262,24 @@ ez-dev 为每个功能创建 `.dev_doc/<feature>/`，包含：
 | `plan.md` | 有价值？→ 合并到模块 README；无价值 → 删除 |
 | `changelog.md` | 合并到模块 CHANGELOG |
 | 整个 `<feature>/` 目录 | feature 完成后清空，目录本身可删除 |
+
+### 归并处理：多个 feature 目录属于同一模块
+
+**示例**：`vector-schema-sync/` + `vector-store-async-query/` + `vector_store_refactor/` → 都归入 `vector_store/`
+
+处理步骤：
+1. 读取每个 feature 目录的 `status.md`，判断是否完成（Phase 6）
+2. 已完成模块：提取关键内容（设计决策、变更记录）到模块 README
+3. 将各模块的 changelog 合并到模块 CHANGELOG.md
+4. 删除各 feature 目录的文件，然后删除目录本身
+
+### 进行中模块不处理
+
+**示例**：`vector-store-factory-dynamic/`（Phase 3.1+3.2）、`llm_compatibility/`（Phase 5.5）
+
+处理原则：
+- 等模块完成后再一次性归并
+- 避免多次归并导致文档碎片化
 
 ---
 
