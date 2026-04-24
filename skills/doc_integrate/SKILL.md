@@ -57,6 +57,33 @@ description: |
 - 等模块完成后再一次性合并
 - 避免多次合并导致文档碎片化
 
+### 原则 6：文档拆分整合
+**设计文档不应单独存放，应拆分整合到 README 和 CHANGELOG**。
+
+| 文档内容 | 处理方式 |
+|----------|----------|
+| 具体设计思路 | → 整合到 `模块/README.md` 对应章节 |
+| 变更记录 | → 整合到 `模块/CHANGELOG.md` |
+| 待执行计划 | → 整合到 README 作为"待实现"章节 |
+| Bug 修复记录 | → 整合到 `模块/CHANGELOG.md` |
+
+**示例**：`2026-04-07-qdrant-payload-schema-design.md` 这类设计文档
+- 设计思路（7个问题的解决方案）→ `vector_store/README.md §Qdrant Schema 校验`
+- 变更记录 → `vector_store/CHANGELOG.md`
+- 文档本身 → 删除
+
+**例外**：如果设计文档包含大量代码示例/详细任务分解（>200行），可保留在 `design/` 子目录，README 添加引用。
+
+### 原则 7：散落文档归类
+**所有非标准路径的文档都应归类到规范模块目录下**。
+
+| 散落文档 | 归属 | 处理方式 |
+|----------|------|----------|
+| `test_fix_plan.md` | `database/` | 整合到 README 作为"待处理" |
+| `excel-test-case-library-plan.md` | `database/` | 整合到 README 作为"待实现" |
+| `项目代码优化修改.md` | `vector_store/` | 已完成 → CHANGELOG；未完成 → README |
+| `text2sql_skill_suite_design.md` | `database/` | 概要 → README，详细 → `design/` |
+
 ---
 
 ## 概述

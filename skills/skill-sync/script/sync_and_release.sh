@@ -7,18 +7,6 @@ LOCAL_REPO="D:/02_code/dev_toolkits"
 SKILLS_DIR="$HOME/.claude/skills"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M')
 
-# 指定要同步的 skills（排除 hs_test, skill-sync, bug_fix-workspace）
-SKILLS_TO_SYNC=(
-    "bug_fix"
-    "daily_progress_summary"
-    "deeptalk"
-    "doc_integrate"
-    "ez-dev"
-    "test"
-    "todo_list_manager"
-    "update_doc"
-)
-
 echo "=========================================="
 echo "Skill Sync - $TIMESTAMP"
 echo "=========================================="
@@ -32,14 +20,11 @@ cd "$LOCAL_REPO"
 rm -rf "$LOCAL_REPO/skills/"*
 mkdir -p "$LOCAL_REPO/skills"
 
-# 复制指定 skills
-for skill_name in "${SKILLS_TO_SYNC[@]}"; do
-    if [ -d "$SKILLS_DIR/$skill_name" ]; then
-        echo "  - 同步: $skill_name"
-        cp -r "$SKILLS_DIR/$skill_name" "$LOCAL_REPO/skills/"
-    else
-        echo "  - 跳过（不存在）: $skill_name"
-    fi
+# 复制所有 skills
+for skill in "$SKILLS_DIR"/*/; do
+    skill_name=$(basename "$skill")
+    echo "  - 同步: $skill_name"
+    cp -r "$skill" "$LOCAL_REPO/skills/"
 done
 
 # Step 2: Git 提交
@@ -66,11 +51,11 @@ echo "[3/3] 打包 .skill 文件..."
 # 创建 release 目录
 mkdir -p "$LOCAL_REPO/releases"
 
-# 打包指定 skills
+# 打包每个 skill
 SKILL_CREATOR="$HOME/.claude/plugins/cache/claude-plugins-official/skill-creator/104d39be10b7/skills/skill-creator/scripts/package_skill.py"
 
-for skill_name in "${SKILLS_TO_SYNC[@]}"; do
-    skill_dir="$LOCAL_REPO/skills/$skill_name"
+for skill_dir in "$LOCAL_REPO/skills"/*/; do
+    skill_name=$(basename "$skill_dir")
     if [ -f "$skill_dir/SKILL.md" ]; then
         echo "  - 打包: $skill_name.skill"
         python "$SKILL_CREATOR" "$skill_dir" "$LOCAL_REPO/releases/"
