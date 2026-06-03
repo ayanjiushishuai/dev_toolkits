@@ -1,10 +1,6 @@
 ---
 name: daily-progress-summary
-description: |
-  生成每日开发进度总结报告。当用户说"生成开发进度报告"、"总结今日进度"、"日报"、"daily report"、
-  "开发进度"、"整理进度"、"执行每日检查"、"每日巡检"时触发。
-  也适用于 CronCreate 定时任务场景：并行执行进度总结、任务更新、全量测试、文档整理，汇总成HTML报告。
-  **定时任务触发**：设置 cron 任务时使用本 skill 的执行逻辑。
+description: 生成每日开发进度总结报告。并行执行进度总结、任务更新、全量测试、文档整理，汇总成HTML报告。
 ---
 
 # Daily Progress Summary Skill

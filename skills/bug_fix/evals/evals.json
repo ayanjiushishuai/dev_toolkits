@@ -4,17 +4,22 @@
     {
       "id": 1,
       "prompt": "帮我修一个bug，报错信息是：TypeError: Cannot read property 'name' of undefined，发生在调用 vector_stores/factory.py 的 get_vector_store 方法时，怀疑和 MilvusProvider 相关",
-      "expected_output": "应该进入 Phase 1: Bug分析，分析报错原因，定位问题代码，创建测试用例复现Bug"
+      "expected_output": "应该进入 Phase 1: 代码定位，分析报错原因，定位问题代码，输出 bug-analysis.md（根因+修复策略），通过修复策略自审清单后进入 Phase 2: 问题复现"
     },
     {
       "id": 2,
       "prompt": "修复这个报错：IndexError: list index out of range，在运行 preprocess/pipeline.py 的 run 方法时出现，相关模块是 PreprocessPipeline",
-      "expected_output": "应该进入 Phase 1: Bug分析，分析IndexError原因，定位问题代码，创建测试复现"
+      "expected_output": "应该进入 Phase 1: 代码定位，追踪调用链定位问题行，输出 bug-analysis.md，通过自审后进入 Phase 2 创建 P0 复现测试"
     },
     {
       "id": 3,
       "prompt": "程序报错 KeyError: 'session_id'，在调用 graph/extraction/extractor.py 的 extract_entities 时发生，应该是 session 管理相关的问题",
-      "expected_output": "应该进入 Phase 1: Bug分析，追踪session_id的来源，定位缺失点，创建测试用例"
+      "expected_output": "应该进入 Phase 1: 代码定位，追踪 session_id 来源定位缺失点，输出 bug-analysis.md 并通过自审"
+    },
+    {
+      "id": 4,
+      "prompt": "XX功能不工作了，行为和预期不一致",
+      "expected_output": "应该进入 Phase 1: 代码定位，收集场景描述、推断相关模块、定位问题代码"
     }
   ]
 }
